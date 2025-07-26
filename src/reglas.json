@@ -1,0 +1,92 @@
+[
+    {
+        "tipotransaccion": "tarjeta",
+        "wally": "no",
+        "culqi": "si",
+        "producto_entregado": "si",
+        "evidencia_th": "si",
+        "paso_1": "Si, debe figurar en pagos con culqi en el equipo afectado",
+        "paso_2": "- Caso regular: Mencionar al comercio que al final se regularizará los comprobantes que no están\n- Caso Especial : Amstel (A este comercio se le apoya al cerrar el evento  y cliente que solicita",
+        "paso_3": "- Caso regular: El equipo de Negocio genera una venta ficticia desde el modulo de venta dias posteriores al evento\n- Caso especial: El equipo de soporte Culqi o Wally debe apoyar a Amstel"
+    },
+    {
+        "tipotransaccion": "tarjeta",
+        "wally": "si",
+        "culqi": "si",
+        "producto_entregado": "no",
+        "evidencia_th": "si",
+        "paso_1": "Si, debe figurar en pagos con culqi en el equipo afectado",
+        "paso_2": "- General: A los comercios se les indica que le puede entregar al producto al consumidor:\n              En caso que NO acepte el producto:\n                  - Se procede con anulación en Culqi Full (En caso hayas problemas de hacerlo, se genera ticket)\n\n              En caso que SI acepte el producto:\n                  - Caso regular: Mencionar al comercio que al final se regularizará los comprobantes que no están\n                  - Caso Especial : Amstel (A este comercio se le apoya al cerrar el evento  y cliente que solicita",
+        "paso_3": "En caso que NO acepte el producto:\n- Se procede con anulación en Culqi Full \n  1. Se busca el pago en Culqi Full\n  2. Se busca la opción para anular la transacción\n  3. Se pasa tarjeta \n\nEn caso que SI acepte el producto:\n- Caso regular: Mencionar al comercio que al final se regularizará los comprobantes que no están\n- Caso Especial : Amstel (A este comercio se le apoya al cerrar el evento  y cliente que solicita"
+    },
+    {
+        "tipotransaccion": "tarjeta",
+        "wally": "si",
+        "culqi": "no",
+        "producto_entregado": "si",
+        "evidencia_th": "si",
+        "paso_1": "Si, debe verificar el comprobante de wally",
+        "paso_2": "No debe ocurrir",
+        "paso_3": "No debe ocurrir"
+    },
+    {
+        "tipotransaccion": "tarjeta",
+        "wally": "si",
+        "culqi": "no",
+        "producto_entregado": "no",
+        "evidencia_th": "si",
+        "paso_1": "Si, debe verificar el comprobante de wally",
+        "paso_2": "No debe ocurrir",
+        "paso_3": "No debe ocurrir"
+    },
+    {
+        "tipotransaccion": "qr",
+        "wally": "no",
+        "culqi": "si",
+        "producto_entregado": "si",
+        "evidencia_th": "si",
+        "paso_1": "Si, debe figurar en pagos con culqi en el equipo afectado",
+        "paso_2": "- Caso regular: Mencionar al comercio que al final se regularizará los comprobantes que no están\n- Caso Especial : Amstel (A este comercio se le apoya al cerrar el evento  y cliente que solicita",
+        "paso_3": "- Caso regular: El equipo de Negocio genera una venta ficticia desde el modulo de venta dias posteriores al evento\n- Caso especial: El equipo de soporte Culqi o Wally debe apoyar a Amstel"
+    },
+    {
+        "tipotransaccion": "qr",
+        "wally": "no",
+        "culqi": "si",
+        "producto_entregado": "no",
+        "evidencia_th": "si",
+        "paso_1": "Si, debe figurar en pagos con culqi en el equipo afectado",
+        "paso_2": "- General: A los comercios se les indica que le puede entregar al producto al consumidor:\n              En caso que NO acepte el producto:\n                  - Se procede con devolución por Ticket (Se crea un correo con los datos del consumidor) \n                     Obligatorio:  Añadir fecha y hora exacta,  ultimos 4 digitos y Serie del POS, Foto del pago del TH\n\n              En caso que SI acepte el producto:\n                  - Caso regular: Mencionar al comercio que al final se regularizará los comprobantes que no están\n                  - Caso Especial : Amstel (A este comercio se le apoya al cerrar el evento  y cliente que solicita, Foto del pago del TH",
+        "paso_3": "En caso que SI acepte el producto:\n- Caso regular: Mencionar al comercio que al final se regularizará los comprobantes que no están\n- Caso Especial : Amstel (A este comercio se le apoya al cerrar el evento  y cliente que solicita"
+    },
+    {
+        "tipotransaccion": "qr",
+        "wally": "si",
+        "culqi": "si",
+        "producto_entregado": "si",
+        "evidencia_th": "si",
+        "paso_1": "Si, debe verificar el comprobante de wally",
+        "paso_2": "No debe ocurrir",
+        "paso_3": "No debe ocurrir"
+    },
+    {
+        "tipotransaccion": "qr",
+        "wally": "si",
+        "culqi": "no",
+        "producto_entregado": "no",
+        "evidencia_th": "si",
+        "paso_1": "Si, debe verificar el comprobante de wally",
+        "paso_2": "No debe ocurrir",
+        "paso_3": "No debe ocurrir"
+    },
+    {
+        "tipotransaccion": "qr",
+        "wally": "no",
+        "culqi": "no",
+        "producto_entregado": "si",
+        "evidencia_th": "si",
+        "paso_1": "Si,requiere evidencia de cobro yape",
+        "paso_2": "- General: Se le indica al comercio que se va a intentar relanzar el yape \n             1.Informar a alguien de tech culqi para relanzar el yape\n                 Obligatorio: Mencionar fecha y hora exacta,  ultimos 4 digitos y Serie del POS, Foto del pago del TH\n              \n               \n             2. En caso que SI, se le muestra al comercio que ya está\n                 - Caso regular: Mencionar al comercio que al final se regularizará los comprobantes que no están \n                  - Caso Especial : Amstel (A este comercio se le apoya al cerrar el evento  y cliente que solicita\n             \n                 En caso que NO, se crea ticket a tech support Culqi con asunto de Abono al comercio\n                 Obligatorio: Mencionar fecha y hora exacta,  ultimos 4 digitos y Serie del POS, Foto del pago del TH",
+        "paso_3": ""
+    }
+]

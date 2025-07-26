@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Guía FILO - Soporte</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    select, button {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
+    .resultado {
+      margin-top: 30px;
+      background: #f4f4f4;
+      padding: 15px;
+      border-radius: 8px;
+    }
+    .resultado p {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Soporte Técnico FILO - Consulta de Casos</h2>
+
+  <label for="tipotransaccion">Tipo de Transacción</label>
+  <select id="tipotransaccion">
+    <option value="tarjeta">Tarjeta</option>
+    <option value="qr">QR</option>
+  </select>
+
+  <label for="wally">¿Se registró en Wally?</label>
+  <select id="wally">
+    <option value="si">Sí</option>
+    <option value="no">No</option>
+  </select>
+
+  <label for="culqi">¿Se registró en Culqi?</label>
+  <select id="culqi">
+    <option value="si">Sí</option>
+    <option value="no">No</option>
+  </select>
+
+  <label for="producto_entregado">¿Se entregó el producto?</label>
+  <select id="producto_entregado">
+    <option value="si">Sí</option>
+    <option value="no">No</option>
+  </select>
+
+  <label for="evidencia_th">¿El TH tiene evidencia?</label>
+  <select id="evidencia_th">
+    <option value="si">Sí</option>
+    <option value="no">No</option>
+  </select>
+
+  <button onclick="consultarAccion()">Consultar Acción</button>
+
+  <div class="resultado" id="resultado" style="display:none;">
+    <h3>Respuesta:</h3>
+    <p><strong>Paso 1:</strong> <span id="paso1"></span></p>
+    <p><strong>Paso 2:</strong> <span id="paso2"></span></p>
+    <p><strong>Paso 3:</strong> <span id="paso3"></span></p>
+  </div>
+
+  <script>
+    async function consultarAccion() {
+      const data = {
+        tipotransaccion: document.getElementById("tipotransaccion").value,
+        wally: document.getElementById("wally").value,
+        culqi: document.getElementById("culqi").value,
+        producto_entregado: document.getElementById("producto_entregado").value,
+        evidencia_th: document.getElementById("evidencia_th").value
+      };
+
+      try {
+        const res = await fetch('http://localhost:3000/api/accion', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        if (!res.ok) {
+          document.getElementById("resultado").style.display = "block";
+          document.getElementById("paso1").innerText = "No se encontró una regla.";
+          document.getElementById("paso2").innerText = "-";
+          document.getElementById("paso3").innerText = "-";
+          return;
+        }
+
+        const respuesta = await res.json();
+        document.getElementById("paso1").innerText = respuesta.paso_1;
+        document.getElementById("paso2").innerText = respuesta.paso_2;
+        document.getElementById("paso3").innerText = respuesta.paso_3;
+        document.getElementById("resultado").style.display = "block";
+      } catch (error) {
+        alert("Error al consultar la API");
+      }
+    }
+  </script>
+</body>
+</html>
